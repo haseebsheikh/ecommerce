@@ -1,5 +1,7 @@
 import { useContext, useState } from "react"
 import { CartContext } from "../contexts/cartContext"
+import Footer from "../components/Footer"
+import Cpy from "../components/Cpy"
 
 const Cart = () => {
   let {cartItems, addToCart, removeFromCart,  setCartItems} = useContext(CartContext)
@@ -27,7 +29,8 @@ const Cart = () => {
   }
 
   return (
-    <div className="container mt-5">
+    <>
+<div className="container mt-5" style={{posiition: 'relative'}}>
       <div className="row">
         <div className="col-md-8 offset-md-2">
           <h2 className="text-center mb-4">Your Cart</h2>
@@ -78,6 +81,11 @@ const Cart = () => {
         </div>
       </div>
     </div>
+    <div style={{position: 'absolute', bottom: '0', width: '100%'}}>
+        <Footer />
+        <Cpy />
+    </div>
+    </>
   )
 }
 

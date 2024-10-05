@@ -15,10 +15,6 @@ const App = () => {
 <CartProvider>
     <Hero />
     <Outlet />
-    <div style={{position: 'relative', bottom: 0, width: '100%'}}>
-    <Footer />
-    <Cpy />
-    </div>
 </CartProvider>
 
   )
