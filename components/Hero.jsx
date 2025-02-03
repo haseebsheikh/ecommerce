@@ -10,9 +10,13 @@ const Hero = () => {
   // get product categories list
   const [categories, setCategories] = useState([])
   useEffect(() => {
-    fetch('https://dummyjson.com/products/category-list')
+    fetch(`${process.env.API_URL}/category`, {
+      headers: {
+      'token': `wYt/VdryGgbFfQtLTViDG8t0FZwIPFnzjPMqGhZBkkandjb1u8q4BuL6mf0oZYnF`
+      }
+    })
     .then(res => res.json())
-    .then(data => setCategories(data))
+    .then(data => setCategories(data.data))
   },[])
 
 
@@ -46,7 +50,7 @@ return (
             <li className="nav-item  dropdown">
                 <select value={selectedDD} onChange={(e) => {e.target.value === 'Categories'? fetchProducts() :  getProductByCategory(e.target.value); setSelectedDD(e.target.value)}} className="nav-link">
                   <option value="Categories">Categories</option>
-                  {categories.map(category => <option key={category} value={category} >{category}</option>)}
+                  {categories.map(data => <option key={data.id} value={data.id} >{data.title}</option>)}
                 </select>
               </li>
             {/* <li className="nav-item dropdown">

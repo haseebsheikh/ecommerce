@@ -16,9 +16,12 @@ export const CartProvider = ({ children }) => {
   }
 
   const getProductByCategory = (category) => {
-    fetch(`https://dummyjson.com/products/category/${category}`)
+    fetch(`${process.env.API_URL}/product?category_id=${category}`, {
+      headers: {
+        'token': `wYt/VdryGgbFfQtLTViDG8t0FZwIPFnzjPMqGhZBkkandjb1u8q4BuL6mf0oZYnF`
+    }})
     .then(res => res.json())
-    .then(data => setProducts(data.products));
+    .then(data => setProducts(data.data))
   }
 
   // A function to add items to the cart
